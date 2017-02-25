@@ -1,5 +1,6 @@
 import connexion
 
+from .Predictor import Predictor
 from pathlib import Path
 
 #extends connexion.App
@@ -10,6 +11,8 @@ class SkinCancerApi(connexion.App):
         connexion.App.__init__(self, import_name,
                                specification_dir=specification_dir,
                                port=port)
+
+        self.predictor = Predictor
 
         self._api_file = Path(api_file)
         self.add_api(self._api_file,
@@ -29,4 +32,4 @@ class SkinCancerApi(connexion.App):
 
     #our API endpoint
     def image_predict(self):
-        return 'OK'
+        return predictor.predict
