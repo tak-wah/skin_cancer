@@ -1,0 +1,50 @@
+swagger: '2.0'
+info:
+  title: Skin Cancer Detection API
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /predict:
+    post:
+      tags: [skin cancer, annotate]
+      operationId: image_predict
+      summary: Predict probability of melanoma
+      parameters:
+        - name: images
+          in: body
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Image'
+          required: true
+      responses:
+        200:
+          description: Return classification result
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClfResult'
+
+definitions:
+  Image:
+      type: object
+      properties:
+        content:
+          description: The image content, base64 encoded
+          type: string
+          readOnly: true
+        source:
+          description: The image source, AWS S3 or Google Cloud Platform
+          type: string
+          readOnly: True
+
+  ClfResult:
+    type: object
+    properties:
+      confidence:
+        description: Confidence
+        type: number
+        example: 0.1
