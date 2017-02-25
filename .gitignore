@@ -1,3 +1,6 @@
 .idea/
 .coverage
 __pycache__
+.ipynb_checkpoints/
+.cache/
+.coverage
