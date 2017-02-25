@@ -2,10 +2,11 @@ import connexion
 
 from pathlib import Path
 
-
+#extends connexion.App
 class SkinCancerApi(connexion.App):
 
     def __init__(self, import_name, specification_dir, api_file, port: int) -> None:
+        #call parent constructor
         connexion.App.__init__(self, import_name,
                                specification_dir=specification_dir,
                                port=port)
@@ -26,5 +27,6 @@ class SkinCancerApi(connexion.App):
         function = getattr(self, function_name)
         return function
 
+    #our API endpoint
     def image_predict(self):
         return 'OK'

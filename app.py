@@ -2,7 +2,7 @@ import os
 
 from api.SkinCancerApi import SkinCancerApi
 
-
+#entry point to fire up the app
 def main():
     root_dir = os.path.dirname(os.path.realpath(__file__))
     port = 8000
