@@ -3,7 +3,7 @@ import logging
 
 from typing import Dict, Any
 
-
+#contains the actual payload
 class Image:
     def __init__(self, content: str = None, source: str = None) -> None:
         if content is not None:

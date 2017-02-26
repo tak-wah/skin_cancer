@@ -1,3 +1,4 @@
+#this is the result which we return to the client
 class ClassifierResult:
     def __init__(self, result, confidence):
         self.__result = result

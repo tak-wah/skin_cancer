@@ -1,6 +1,6 @@
 from typing import List
 
-
+#wrapper for the configuration
 class ClassifierConfig:
     def __init__(self, base_model_name: str,
                  img_height: int, img_width: int, img_channels: int,
