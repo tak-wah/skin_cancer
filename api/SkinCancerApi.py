@@ -1,19 +1,25 @@
 import connexion
 
-from .Predictor import Predictor
+from src.classification.NNClassifier import NNClassifier
+from src.classification.ClassifierResult import ClassifierResult
+from src.common.Image import Image
 from pathlib import Path
 
-#extends connexion.App
-class SkinCancerApi(connexion.App):
+from typing import List, Dict, Any
 
-    def __init__(self, import_name, specification_dir, api_file, port: int) -> None:
-        #call parent constructor
+
+# extends connexion.App
+class SkinCancerApi(connexion.App):
+    def __init__(self, import_name: str, specification_dir: str,
+                 api_file: str, port: int,
+                 classifier: NNClassifier) -> None:
+
+        # call parent constructor
         connexion.App.__init__(self, import_name,
                                specification_dir=specification_dir,
                                port=port)
 
-        self.predictor = Predictor
-
+        self.__classifier = classifier
         self._api_file = Path(api_file)
         self.add_api(self._api_file,
                      resolver=self.function_resolver,
@@ -30,6 +36,7 @@ class SkinCancerApi(connexion.App):
         function = getattr(self, function_name)
         return function
 
-    #our API endpoint
-    def image_predict(self):
-        return predictor.predict
+    # our API endpoint
+    def image_predict(self, images: List[Dict[str, Any]]) -> List[ClassifierResult]:
+        images_to_process = [Image.from_dict(image) for image in images]
+        return [self.__classifier.predict(image).to_dict for image in images_to_process]

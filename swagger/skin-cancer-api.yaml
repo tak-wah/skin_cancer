@@ -7,11 +7,11 @@ consumes:
 produces:
   - application/json
 paths:
-  /predict:
+  /melanoma/predict:
     post:
-      tags: [skin cancer, annotate]
+      tags: [skin cancer, predict]
       operationId: image_predict
-      summary: Predict probability of melanoma
+      summary: Predict whether the mole on the image is a melanoma
       parameters:
         - name: images
           in: body
@@ -45,6 +45,11 @@ definitions:
     type: object
     properties:
       confidence:
-        description: Confidence
+        description: Confidence in the predicted result
         type: number
+        format: float
         example: 0.1
+      result:
+        description: The classification result
+        type: string
+        readOnly: True

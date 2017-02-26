@@ -5,7 +5,7 @@ from typing import Dict, Any
 
 
 class Image:
-    def __init__(self, content: str = None, source: str = None):
+    def __init__(self, content: str = None, source: str = None) -> None:
         if content is not None:
             if content == '':
                 msg = 'image content is empty'
@@ -23,7 +23,7 @@ class Image:
                 raise ValueError(msg)
 
     @classmethod
-    def from_dict(cls, dct: Dict[str, Any]):
+    def from_dict(cls, dct: Dict[str, Any]) -> 'Image':
         content = dct['content'] if 'content' in dct else None
         source = dct['source'] if 'source' in dct else None
         return cls(content, source)
