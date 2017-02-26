@@ -4,8 +4,6 @@ sys.path.append('./../')
 import requests
 import argparse
 import base64
-from src.classification.ClassifierResult import ClassifierResult
-
 
 from typing import List
 

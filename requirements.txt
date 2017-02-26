@@ -5,3 +5,4 @@ tensorflow==1.0.0
 h5py==2.6.0
 Keras==1.2.2
 Pillow==4.0.0
+requests==2.13.0

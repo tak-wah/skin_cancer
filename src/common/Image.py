@@ -1,4 +1,5 @@
 import base64
+import requests
 import logging
 
 from typing import Dict, Any
@@ -38,7 +39,13 @@ class Image:
 
     @staticmethod
     def _get_from_source(source: str) -> str:
-        return ""
+        response = requests.get(source)
+        if response.status_code == 200:
+            return response.content
+        else:
+            msg = "request for source '{0}' failed".format(source)
+            logging.error(msg)
+            raise Exception(msg)
 
     @staticmethod
     def _validate_source(source: str) -> bool:
