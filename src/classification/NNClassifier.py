@@ -7,7 +7,7 @@ from keras import applications
 from keras.models import Model
 from keras.layers import Input, Layer
 
-
+#abstract base class for different models
 class NNClassifier(ABC):
     def __init__(self, config: ClassifierConfig) -> None:
         self._config = config
