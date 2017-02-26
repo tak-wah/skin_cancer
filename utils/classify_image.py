@@ -12,7 +12,8 @@ parser.add_argument('imagePath', type=str)
 parser.add_argument('-host', type=str, default='localhost')
 parser.add_argument('-port', type=int, default=8080)
 
-
+#this is a utility to test the service from the command line
+#sample usage: python classify_image.py IMAGE.jpg
 class PredictApi:
     def __init__(self, host: str, port: int):
         self._predict_endpoint = 'http://{0}:{1}/melanoma/predict'.format(
