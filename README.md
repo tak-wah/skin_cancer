@@ -29,3 +29,13 @@ pip3 install -r requirements.txt
 ```python
 python3 app.py
 ```
+
+## Troubleshooting
+
+If you are trying to start the server and get an OSError: Unable to open file (File signature not found)
+
+Execute those commands:
+```python
+brew install git-lfs
+git lfs pull
+```

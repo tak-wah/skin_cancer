@@ -15,7 +15,7 @@ class SkinCancerApi(connexion.App):
                  classifier: NNClassifier) -> None:
 
         # call parent constructor
-        connexion.App.__init__(self, import_name,
+        app = connexion.App.__init__(self, import_name,
                                specification_dir=specification_dir,
                                port=port)
 
